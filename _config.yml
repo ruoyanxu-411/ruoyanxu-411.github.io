@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "China"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Ruoyan Xu"
+title                    : "Ruoyan Xu(徐若妍)"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "Academic Personal Website"  
