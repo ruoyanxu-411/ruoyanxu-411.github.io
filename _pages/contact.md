@@ -11,7 +11,7 @@ please feel free to contact me via the following channels.
 - **Affiliation:** Institute of Medical Technology, Peking University Health Science Center  
 
 - **Laboratory:** Medical Imaging Laboratory (MILAB)  
-  <img src="../images/milab_logo.png" alt="MILAB logo" width="120" style="margin:10px 0;">  
+  <img src="../images/milab_logo.png" >  
   🔗 https://xiezhaoheng.github.io  
 
 - **GitHub:** https://github.com/tangoz1003
