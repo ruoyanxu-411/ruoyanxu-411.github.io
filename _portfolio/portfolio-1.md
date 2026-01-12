@@ -6,8 +6,7 @@ permalink: /portfolio/
 
 My research focuses on developing **AI-driven multimodal medical imaging methods**
 to investigate disease mechanisms and support precision diagnosis, with a particular
-emphasis on **nuclear medicine**, **total-body PET/CT**, and **neurodegenerative and
-ophthalmic diseases**.
+emphasis on **nuclear medicine**, **total-body PET/CT**, and **neurodegenerative diseases**.
 
 ---
 
@@ -67,8 +66,6 @@ Current topics include:
 ---
 
 ## Methodological Interests
-
-![Methodological pipeline and AI framework](../images/methods_placeholder.jpg)
 
 Across these applications, I am broadly interested in methodological advances
 in **medical image analysis and artificial intelligence**, including:
