@@ -7,7 +7,7 @@ permalink: /contact/
 If you are interested in my research or would like to discuss potential collaborations,
 please feel free to contact me via the following channels.
 
-- **Email:** ruoyan_xu@pku.edu.cn  
+- **Email:** xuruoyan@stu.pku.edu.cn  
 - **Affiliation:** Institute of Medical Technology, Peking University Health Science Center  
 
 - **Laboratory:** Medical Imaging Laboratory (MILAB)  
