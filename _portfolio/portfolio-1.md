@@ -15,7 +15,7 @@ emphasis on **nuclear medicine**, **total-body PET/CT**, and **neurodegenerative
 
 ### Top Rated Oral Presentation at EANM 2025
 
-![EANM 2025 Top Rated Oral Presentation](../images/eanm25_oral_placeholder.jpg)
+![EANM 2025 Top Rated Oral Presentation](/images/eanm25_oral_placeholder.jpg)
 
 **Multiorgan Metabolic Dysregulation in Alzheimer’s Disease:  
 Total-body PET/CT Reveals Systemic Network Interactions with Amyloid Burden**
@@ -33,7 +33,7 @@ methodological advances in whole-body neuroimaging beyond brain-centric analyses
 
 ## Multimodal Neuroimaging for Alzheimer’s Disease
 
-![Total-body PET/CT and metabolic network analysis for Alzheimer’s disease](../images/ad_tbpet_placeholder.jpg)
+![Total-body PET/CT and metabolic network analysis for Alzheimer’s disease](/images/ad_tbpet_placeholder.jpg)
 
 I study systemic and brain-specific metabolic alterations in Alzheimer’s disease
 using **total-body PET/CT**, integrating whole-body FDG and amyloid PET imaging with
@@ -50,7 +50,7 @@ Current topics include:
 
 ## AI-driven Multimodal Imaging for Graves’ Ophthalmopathy
 
-![FAPI PET/CT and deep learning–based multimodal fusion for Graves’ ophthalmopathy](../images/graves_fapi_placeholder.jpg)
+![FAPI PET/CT and deep learning–based multimodal fusion for Graves’ ophthalmopathy](/images/graves_fapi_placeholder.jpg)
 
 I am also involved in developing a **precision assessment and staging framework**
 for Graves’ ophthalmopathy based on **[¹⁸F]AlF-NOTA-FAPI-04 PET/CT** and deep
