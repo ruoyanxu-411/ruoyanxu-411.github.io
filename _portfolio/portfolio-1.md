@@ -1,6 +1,7 @@
 ---
 layout: single
 title: "Main Research"
+date: 2026-01-13
 permalink: _portfolio/portfolio-1.md
 ---
 
