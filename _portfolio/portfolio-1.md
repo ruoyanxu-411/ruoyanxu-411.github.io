@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Research"
-permalink: /portfolio/
+permalink: _portfolio/portfolio-1.md
 ---
 
 My research focuses on developing **AI-driven multimodal medical imaging methods**
