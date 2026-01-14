@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Research"
+title: "Main Research"
 permalink: _portfolio/portfolio-1.md
 ---
 
