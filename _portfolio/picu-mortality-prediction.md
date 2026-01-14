@@ -33,7 +33,7 @@ classes: wide
 {% comment %} 如果你生成了 outcome_distribution.png / missing_values_bar.png 就直接展示 {% endcomment %}
 
 <figure>
-  <img src="/images/picu-mortality-prediction/outcome_distribution.png" alt="Outcome distribution">
+  <img src="/images/picu-mortality-prediction/outcome_distribution.png.png" alt="Outcome distribution">
   <figcaption>结局分布（Survival vs Death）：数据存在明显类别不平衡。</figcaption>
 </figure>
 
