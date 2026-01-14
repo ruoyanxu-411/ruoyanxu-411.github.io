@@ -2,72 +2,67 @@
 title: "PICU患者死亡率预测：多模型机器学习全流程实现"
 collection: portfolio
 type: "Machine Learning"
-permalink: /portfolio/picu-mortality-prediction
+permalink: /portfolio/picu-mortality-prediction/
 date: 2026-01-14
-excerpt: "基于PICU临床数据构建Logistic回归、随机森林和SVM模型，实现患者住院死亡率精准预测，包含完整的数据预处理、模型调优与可解释性分析"
+excerpt: "基于PICU临床数据构建Logistic回归、随机森林与SVM模型，实现住院死亡率预测；覆盖缺失值处理、异常值截断、交叉验证调参、ROC/PR/校准评估与特征贡献解释。"
 header:
   teaser: /images/portfolio/picu-mortality-prediction/roc_curves_models.png
 tags:
 - 临床机器学习
 - 死亡率预测
 - 模型可解释性
-- 特征工程
+- 端到端Pipeline
 tech_stack:
 - name: Python
 - name: Scikit-learn
 - name: Pandas
 - name: Matplotlib
 - name: Seaborn
+classes: wide
 ---
 
 ## 项目背景
-本项目针对儿科重症监护室（PICU）患者的住院死亡率预测问题，基于临床数据集构建多模型机器学习预测系统。通过完整的数据预处理流程（缺失值填充、异常值截断、特征标准化），对比Logistic回归、随机森林和SVM三种模型的预测性能，并通过特征重要性分析揭示关键临床影响因素，为临床决策提供数据支持。
+儿科重症监护室（PICU）患者的院内死亡率预测对风险分层与资源分配具有重要意义。本项目基于PICU临床表格数据，搭建端到端的机器学习流程：**数据读取 → 缺失值处理 → 异常值截断（winsorization）→ 特征标准化 → 多模型训练与调参 → 综合评估（ROC/PR/校准/混淆矩阵）→ 特征贡献解释**。
 
-## 核心实现
+---
 
-### 1. 数据预处理Pipeline
+## 数据概览与缺失值情况
+
+**数据规模与结局比例：** 总样本约 8,952，死亡率约 7.5%（类别不平衡明显）。
+
+{% comment %} 如果你生成了 outcome_distribution.png / missing_values_bar.png 就直接展示 {% endcomment %}
+
+<figure>
+  <img src="/images/portfolio/picu-mortality-prediction/outcome_distribution.png" alt="Outcome distribution">
+  <figcaption>结局分布（Survival vs Death）：数据存在明显类别不平衡。</figcaption>
+</figure>
+
+<figure>
+  <img src="/images/portfolio/picu-mortality-prediction/missing_values_bar.png" alt="Missing value rate">
+  <figcaption>变量缺失率分布：用于支撑后续的中位数填补策略。</figcaption>
+</figure>
+
+---
+
+## 核心实现：端到端预处理 Pipeline
+
+本项目采用统一 Pipeline 实现“**训练集拟合 + 测试集应用**”，避免数据泄漏：
+
+- **缺失值填补**：连续变量用 **Median Imputation**（鲁棒）
+- **异常值处理**：Winsorization（1%–99%分位截断）
+- **标准化**：Z-score 标准化（对 LR / SVM 更友好）
+- **类不平衡**：所有模型均使用 `class_weight="balanced"` 或 `balanced_subsample`
+
 ```python
-# 数值特征处理：中位数填充+异常值截断+标准化
+# 数值特征：中位数填补 + 异常值截断 + 标准化
 numeric_preprocess = Pipeline(steps=[
     ("imputer", SimpleImputer(strategy="median")),
     ("winsor", Winsorizer(lower_q=0.01, upper_q=0.99)),
     ("scaler", StandardScaler()),
 ])
 
-# 分类特征处理：众数填充+独热编码
-categorical_preprocess = Pipeline(steps=[
-    ("imputer", SimpleImputer(strategy="most_frequent")),
-    ("onehot", OneHotEncoder(handle_unknown="ignore")),
-])
-
-# 合并预处理流程
+# 合并预处理流程（本数据集实际无分类变量）
 preprocess = ColumnTransformer(
-    transformers=[
-        ("num", numeric_preprocess, numeric_cols),
-        ("cat", categorical_preprocess, categorical_cols),
-    ],
+    transformers=[("num", numeric_preprocess, numeric_cols)],
     remainder="drop"
 )
-# 模型与参数网格定义
-models = {
-    "Logistic(L2)": (Pipeline(steps=[("prep", preprocess), ("clf", LogisticRegression(class_weight="balanced"))]), 
-                     {"clf__C": [0.01, 0.1, 1, 5, 10]}),
-    "RandomForest": (Pipeline(steps=[("prep", preprocess), ("clf", RandomForestClassifier(class_weight="balanced_subsample", n_estimators=500))]),
-                     {"clf__max_depth": [None, 5, 10, 20], "clf__min_samples_leaf": [1, 3, 5, 10]}),
-    "SVM(RBF)": (Pipeline(steps=[("prep", preprocess), ("clf", SVC(probability=True, class_weight="balanced"))]),
-                 {"clf__C": [0.5, 1, 2, 5, 10], "clf__gamma": ["scale", 0.01, 0.05, 0.1]})
-}
-
-# 5折分层交叉验证+网格搜索
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-best_estimators = {}
-for name, (pipe, grid) in models.items():
-    gs = GridSearchCV(estimator=pipe, param_grid=grid, scoring="roc_auc", cv=cv, n_jobs=-1)
-    gs.fit(X_train, y_train)
-    best_estimators[name] = gs.best_estimator_
-# 置换重要性分析（最优模型）
-r = permutation_importance(
-    best_est, X_test, y_test,
-    scoring="roc_auc", n_repeats=10, random_state=42, n_jobs=-1
-)
-imp = pd.Series(r.importances_mean, index=feature_names).sort_values(ascending=False)
