@@ -2,7 +2,7 @@
 layout: single
 title: "Main Research"
 date: 2026-01-13
-permalink: /_portfolio/portfolio-1.md
+permalink: /_portfolio/portfolio-1/
 ---
 
 My research focuses on developing **AI-driven multimodal medical imaging methods**
