@@ -6,7 +6,7 @@ permalink: /portfolio/picu-mortality-prediction/
 date: 2026-01-14
 excerpt: "基于PICU临床数据构建Logistic回归、随机森林与SVM模型，实现住院死亡率预测；覆盖缺失值处理、异常值截断、交叉验证调参、ROC/PR/校准评估与特征贡献解释。"
 header:
-  teaser: /images/portfolio/picu-mortality-prediction/roc_curves_models.png
+  teaser: /images/picu-mortality-prediction/roc_curves_models.png
 tags:
 - 临床机器学习
 - 死亡率预测
@@ -33,12 +33,12 @@ classes: wide
 {% comment %} 如果你生成了 outcome_distribution.png / missing_values_bar.png 就直接展示 {% endcomment %}
 
 <figure>
-  <img src="/images/portfolio/picu-mortality-prediction/outcome_distribution.png" alt="Outcome distribution">
+  <img src="/images/picu-mortality-prediction/outcome_distribution.png" alt="Outcome distribution">
   <figcaption>结局分布（Survival vs Death）：数据存在明显类别不平衡。</figcaption>
 </figure>
 
 <figure>
-  <img src="/images/portfolio/picu-mortality-prediction/missing_values_bar.png" alt="Missing value rate">
+  <img src="/images/picu-mortality-prediction/missing_values_bar.png" alt="Missing value rate">
   <figcaption>变量缺失率分布：用于支撑后续的中位数填补策略。</figcaption>
 </figure>
 
