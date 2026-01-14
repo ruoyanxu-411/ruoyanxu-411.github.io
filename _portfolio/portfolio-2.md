@@ -2,7 +2,7 @@
 title: "PICU患者死亡率预测：多模型机器学习全流程实现"
 collection: portfolio
 type: "Machine Learning"
-permalink: /portfolio/picu-mortality-prediction
+permalink: /portfolio/
 date: 2026-01-14
 excerpt: "基于PICU临床数据构建Logistic回归、随机森林和SVM模型，实现患者住院死亡率精准预测，包含完整的数据预处理、模型调优与可解释性分析"
 header:
