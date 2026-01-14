@@ -201,7 +201,7 @@ classes: wide
 <hr>
 
 <div class="page__meta" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-  <a class="btn btn--inverse" href="_portfolio/portfolio-1.md">&larr; Previous: Portfolio 1</a>
+  <a class="btn btn--inverse" href="portfolio-1.md">&larr; Previous: Portfolio 1</a>
   <a class="btn btn--inverse" href="/portfolio/">&uarr; Back to Portfolio</a>
   <a class="btn btn--inverse" href="PORTFOLIO2_PERMALINK">Next: Portfolio 2 &rarr;</a>
 </div>
